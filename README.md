@@ -52,8 +52,3 @@ Wanderlust is a full-stack hotel booking platform with a **React (Vite)** fronte
 ```
 
 
-cd frontend
-npm run dev
-    
-
-
