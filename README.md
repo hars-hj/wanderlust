@@ -49,7 +49,7 @@ Wanderlust is a full-stack hotel booking platform with a **React (Vite)** fronte
     ├── package.json
     ├── package-lock.json
     └── README.md
-
+```
 Getting Started
 1) Clone the repo
 git clone https://github.com/hars-hj/wanderlust.git
