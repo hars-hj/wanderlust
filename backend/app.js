@@ -2,8 +2,6 @@ if(process.env.NODE_ENV != "production"){
  require("dotenv").config();
 }
 
-
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -18,6 +16,7 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
 const User = require("./models/user");
+
 
 // Routers
 const listingsRoutes = require("./routes/listings");
@@ -88,25 +87,29 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes
-app.get("/", (req, res) => res.redirect("/listing"));
+// API Routes
+app.use("/api/listings", listingsRoutes);
+app.use("/api/listings/:id/reviews", reviewsRoutes);
+app.use("/api", userRouter);
 
-app.use("/listing", listingsRoutes);
-app.use("/listing/:id/review", reviewsRoutes);
-app.use("/",userRouter);
-
-// 404 handler
-// Catch-all (Express 5+ safe)
-app.all(/.*/, (req, res, next) => {
-  next(new ExpressError("Page not found", 404));
+// 404 handler (API)
+app.all(/^\/api\/.*$/, (req, res) => {
+  res.status(404).json({
+    success: false,
+    message: "API route not found"
+  });
 });
 
 
-
-// Error handler
+// Global error handler (API)
 app.use((err, req, res, next) => {
-  const { statusCode = 500 } = err;
-  res.status(statusCode).render("listing/error", { err });
+  const { statusCode = 500, message = "Something went wrong" } = err;
+
+  res.status(statusCode).json({
+    success: false,
+    message
+  });
 });
 
-app.listen(3000, () => console.log("App is listening on port 3000"));
+
+app.listen(5000, () => console.log("App is listening on port 5000"));

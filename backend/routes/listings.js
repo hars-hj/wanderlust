@@ -21,7 +21,7 @@ router
  
 
 // New form
-router.get("/new", isLoggedIn, listingcontroller.renderNewForm);
+//router.get("/new", isLoggedIn, listingcontroller.renderNewForm);
 
 
 router
@@ -37,7 +37,7 @@ router
 
 
 // Edit form
-router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingcontroller.Edit));
+//router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(listingcontroller.Edit));
 
 
 module.exports = router;
