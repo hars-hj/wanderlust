@@ -1,8 +1,10 @@
-//implementation of these functions in a upper layer pending.
-import { useEffect, useState } from "react";
+
+import { useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+
+import "../rating.css";
 
 
 export default function Show() {
@@ -263,18 +265,31 @@ async function onDeleteReview(reviewId) {
               >
                 <div>
                   <label className="block font-medium mb-1">Rating</label>
-                  <select
-                    name="rating"
-                    className="w-full border rounded px-3 py-2"
-                    required
-                  >
-                    <option value="">Select rating</option>
+                  {/* starability radio group copied from backend view */}
+                  <fieldset className="starability-slot">
+                    <legend className="sr-only">Rating</legend>
+                    <input
+                      type="radio"
+                      id="no-rate"
+                      className="input-no-rate"
+                      name="rating"
+                      value=""
+                      defaultChecked
+                      aria-label="No rating."
+                    />
                     {[1, 2, 3, 4, 5].map((r) => (
-                      <option key={r} value={r}>
-                        {r}
-                      </option>
+                      <Fragment key={r}>
+                        <input
+                          type="radio"
+                          id={`rate${r}`}
+                          name="rating"
+                          value={r}
+                          required={r === 1}
+                        />
+                        <label htmlFor={`rate${r}`} title={`${r} star${r > 1 ? "s" : ""}`}>{`${r} star`}</label>
+                      </Fragment>
                     ))}
-                  </select>
+                  </fieldset>
                 </div>
 
                 <div>
@@ -304,7 +319,7 @@ async function onDeleteReview(reviewId) {
           {listing?.reviews?.map((review) => (
             <div
               key={review._id}
-              className="border rounded-lg p-4 mb-4 shadow-sm"
+              className="border rounded-lg p-4 mb-3 bg-white shadow"
             >
               <h5 className="font-semibold">
                 {review.author.username}
@@ -314,8 +329,12 @@ async function onDeleteReview(reviewId) {
                 <strong>Comment:</strong> {review.comment}
               </p>
 
-              <p className="text-sm text-gray-500 mt-1">
-                ⭐ {review.rating} / 5
+              {/* starability result for displaying rating */}
+              <p
+                className="starability-result mt-1"
+                data-rating={review.rating}
+              >
+                Rated: {review.rating} star{review.rating > 1 ? "s" : ""}
               </p>
 
               {currUser && currUser.id === review.author._id && (
@@ -325,7 +344,7 @@ async function onDeleteReview(reviewId) {
                 >
                   Delete Review
                 </button>
-              )} 
+              )}
             </div>
          ))}
         </div>

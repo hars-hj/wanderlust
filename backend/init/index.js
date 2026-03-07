@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const data = require("./data.js");
 const Listing = require("../models/listing.js")
 const initData = require("./data.js");
+if(process.env.NODE_ENV != "production"){
+ require("dotenv").config();
+}
+
+const dburl = process.env.ATLASDB_URL ;
 
 main().then(()=>{
     console.log("database is running");
@@ -9,7 +14,7 @@ main().then(()=>{
 .catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect("mongodb://127.0.0.1:27017/wonderlust");
+  await mongoose.connect(dburl);
 }
 
 const initDb = async () => {

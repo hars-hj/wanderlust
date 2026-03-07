@@ -3,8 +3,8 @@ import Landingpage from './pages/mainpage'
 import { Routes, Route } from "react-router-dom";
 
 
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Login from "./pages/login";
+import Signup from "./pages/signup";
 
 import Show from "./pages/show";
 import NewListingForm from './pages/newlisting';

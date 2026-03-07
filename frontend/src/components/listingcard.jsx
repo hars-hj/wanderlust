@@ -1,7 +1,7 @@
 import '../tailwind.css'
 import { useNavigate } from "react-router-dom";
 
-export default function ListingCard({ listing }) {
+export default function ListingCard({ listing, showTax = false }) {
   const navigate = useNavigate();
   return (
     
@@ -21,7 +21,12 @@ export default function ListingCard({ listing }) {
         </h3>
 
         <p className="mt-1 text-black font-semibold ">
-          {listing.price}
+          {listing.price.toLocaleString("en-IN")}
+          {showTax && (
+            <span className="text-gray-500 ml-1">
+              + {(listing.price * 0.18).toLocaleString("en-IN")} tax
+            </span>
+          )}
           <span className="text-black-500 font-semibold "> / Night</span>
         </p>
       </div>

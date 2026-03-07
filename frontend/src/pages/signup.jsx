@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
-// connection with backend pending
+
 
 export default function Signup() {
   const navigate  = useNavigate();
@@ -38,7 +38,7 @@ export default function Signup() {
         throw new Error(data.message || "Signup failed");
       }
 
-      // ✅ success
+      // success
       navigate('/login');
     } catch (err) {
       setError(err.message);

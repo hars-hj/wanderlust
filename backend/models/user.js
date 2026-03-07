@@ -7,6 +7,7 @@ const userSchema = new Schema({
         type: String,
         required: true,
     }
+    
 });
 
 userSchema.plugin(passportLocalMongoose); // adds username, hash and salt fields
