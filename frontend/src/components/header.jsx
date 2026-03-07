@@ -23,7 +23,7 @@ export default function Header() {
 
         {/* Navigation */}
         <nav className="hidden md:flex gap-6 text-gray-700 font-medium">
-          <Link to="/" className="hover:text-black">Home</Link>
+          
           <Link to="/listings" className="hover:text-black">Listings</Link>
 
           {user && (

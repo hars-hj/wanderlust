@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import ListingCard from "../components/listingcard";
 import { Link } from "react-router-dom";
 
-// filter definitions matching backend index.ejs
+
 const FILTERS = [
   { icon: "fa-solid fa-fire", label: "Trending" },
   { icon: "fa-solid fa-bed", label: "Rooms" },
