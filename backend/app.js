@@ -86,7 +86,9 @@ app.use((req, res, next) => {
     res.locals.error = req.flash('error');
     next();
 });
-
+app.get("/health", (req, res) => {
+  res.status(200).json({ ok: true });
+});
 // API Routes
 app.use("/api/listings", listingsRoutes);
 app.use("/api/listings/:id/reviews", reviewsRoutes);
