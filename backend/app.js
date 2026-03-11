@@ -22,7 +22,7 @@ const User = require("./models/user");
 const listingsRoutes = require("./routes/listings");
 const reviewsRoutes = require("./routes/reviews");
 const userRouter  = require("./routes/user");
-
+const chatRouter  = require('./routes/chat');
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -93,6 +93,8 @@ app.get("/health", (req, res) => {
 app.use("/api/listings", listingsRoutes);
 app.use("/api/listings/:id/reviews", reviewsRoutes);
 app.use("/api", userRouter);
+app.use("/api", chatRouter);
+
 
 // 404 handler (API)
 app.all(/^\/api\/.*$/, (req, res) => {
