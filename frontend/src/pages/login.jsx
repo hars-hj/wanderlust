@@ -17,8 +17,8 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await login({ username, password }); // session + state
-      navigate("/listings", { replace: true }); //  IMMEDIATE redirect
+      await login({ username, password }); // session +state
+      navigate("/listings", { replace: true }); //   redirect
     } catch (err) {
       setError(err.message || "Login failed");
     } finally {

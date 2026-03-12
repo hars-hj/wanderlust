@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
           const data = await res.json();
           setUser(data);        //  logged in
         } else {
-          setUser(null);        //  NOT logged in
+          setUser(null);        //  not logged in
         }
       })
       .catch(() => {
@@ -43,7 +43,7 @@ export function AuthProvider({ children }) {
     }
 
     const data = await res.json();
-    setUser(data); // ✅ user now truthy
+    setUser(data); //  user now truthy
   };
 
   //  Signup
