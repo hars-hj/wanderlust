@@ -20,35 +20,6 @@ Wanderlust is a full-stack hotel booking platform with a **React (Vite)** fronte
 
 ---
 
-## Monorepo Structure
-
-```txt
-.
-├── backend
-│   ├── views/
-│   ├── .env
-│   ├── app.js
-│   ├── cloudconfig.js
-│   ├── middleware.js
-│   ├── schema.js
-│   ├── package.json
-│   └── package-lock.json
-└── frontend
-    ├── public/
-    ├── src/
-    │   ├── components/
-    │   ├── context/
-    │   ├── pages/
-    │   ├── App.jsx
-    │   ├── main.jsx
-    │   ├── ListingsTest.jsx
-    │   └── tailwind.css
-    ├── index.html
-    ├── vite.config.js
-    ├── eslint.config.js
-    ├── package.json
-    ├── package-lock.json
-    └── README.md
-```
+This project includes an AI-powered chatbot integrated into the WonderLust platform to assist users in discovering and exploring property listings. The chatbot is implemented as a slide-out chat panel on the frontend using React and communicates with a backend API through Axios. Users can ask questions about listings, locations, or general platform usage, and the chatbot responds dynamically based on backend processing. The interface is designed to match the website’s clean and modern UI, featuring message bubbles, real-time responses, and a smooth chat experience.
 
 
